@@ -36,7 +36,7 @@ if ingrediets_list:
         st.write('The search value for ', f_choosen,' is ', search_on, '.')
         
         st.subheader(f_choosen+' Nutritin Information')
-        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+f_choosen)
         fv_df = st.dataframe(data=fruityvice_response.json(),use_container_width=True)
         
     inser_stm = """insert into smoothies.public.orders (ingredients,name_on_order)
