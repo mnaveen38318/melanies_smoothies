@@ -29,8 +29,8 @@ if ingrediets_list:
 
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 st.text(fruityvice_response)
-    submit_bt = st.button('Submit')
-    if submit_bt:
-        session.sql(inser_stm).collect()
-        st.success("Your Smoothie is ordered!", icon="✅")
+submit_bt = st.button('Submit')
+if submit_bt:
+    session.sql(inser_stm).collect()
+    st.success("Your Smoothie is ordered!", icon="✅")
     
