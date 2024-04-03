@@ -24,6 +24,9 @@ if ingrediets_list:
     ingrediemts_str = ''
     for f_choosen in ingrediets_list:
         ingrediemts_str+=f_choosen +' '
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        fv_df = st.dataframe(data=fruityvice_response.json(),use_container_width=True)
+        
     inser_stm = """insert into smoothies.public.orders (ingredients,name_on_order)
                     values('"""+ingrediemts_str+"""','"""+name_on_smoothie+"""')"""
     submit_bt = st.button('Submit')
@@ -31,7 +34,5 @@ if ingrediets_list:
         session.sql(inser_stm).collect()
         st.success('Your Smoothie is ordered!', icon="✅")
 
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-#st.text(fruityvice_response.json())
-fv_df = st.dataframe(data=fruityvice_response.json(),use_container_width=True)
+
     
