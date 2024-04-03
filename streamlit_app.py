@@ -9,13 +9,13 @@ st.write(
     """
 )
 
-name_on_smoothie = st.text_input('Name on Smoothie :')
-st.write('The Name on Smoothie will be ', name_on_smoothie)
+name_on_smoothie = st.text_input("Name on Smoothie :")
+st.write("The Name on Smoothie will be ", name_on_smoothie)
 
-session = st.connection('snowflake').session()
-my_df = session.table('smoothies.public.fruit_options').select(col('fruit_name'))
+session = st.connection("snowflake").session()
+my_df = session.table("smoothies.public.fruit_options").select(col("fruit_name"))
 #st.dataframe(data=my_df, use_container_width=True)
-ingrediets_list = st.multiselect('Choose up to 5 ingredients'
+ingrediets_list = st.multiselect("Choose up to 5 ingredients"
                                  , my_df
                                 ,max_selections = 5)
 
@@ -28,5 +28,5 @@ if ingrediets_list:
     submit_bt = st.button('Submit')
     if submit_bt:
         session.sql(inser_stm).collect()
-        st.success('Your Smoothie is ordered!', icon="✅")
+        st.success("Your Smoothie is ordered!", icon="✅")
     
