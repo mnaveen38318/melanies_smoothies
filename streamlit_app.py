@@ -32,6 +32,9 @@ if ingrediets_list:
     ingrediemts_str = ''
     for f_choosen in ingrediets_list:
         ingrediemts_str+=f_choosen +' '
+        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == f_choosen, 'SEARCH_ON'].iloc[0]
+        st.write('The search value for ', f_choosen,' is ', search_on, '.')
+        
         st.subheader(f_choosen+' Nutritin Information')
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
         fv_df = st.dataframe(data=fruityvice_response.json(),use_container_width=True)
