@@ -14,7 +14,10 @@ name_on_smoothie = st.text_input("Name on Smoothie :")
 st.write("The Name on Smoothie will be ", name_on_smoothie)
 
 session = st.connection("snowflake").session()
-my_df = session.table("smoothies.public.fruit_options").select(col("fruit_name"))
+my_df = session.table("smoothies.public.fruit_options").select(col("fruit_name"),col(""search_on))
+st.dataframe(data=my_df, use_container_width=True)
+st.stop()
+
 #st.dataframe(data=my_df, use_container_width=True)
 ingrediets_list = st.multiselect("Choose up to 5 ingredients"
                                  , my_df
