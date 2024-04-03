@@ -19,12 +19,12 @@ my_df = session.table('smoothies.public.fruit_options').select(col('fruit_name')
 #st.dataframe(data=my_df, use_container_width=True)
 #st.stop()
 pd_df = my_df.to_pandas()
-st.dataframe(pd_df)
-st.stop()
+#st.dataframe(pd_df)
+#st.stop()
 
 #st.dataframe(data=my_df, use_container_width=True)
 ingrediets_list = st.multiselect("Choose up to 5 ingredients"
-                                 , pd_df
+                                 , my_df
                                 ,max_selections = 5)
 
 if ingrediets_list:
